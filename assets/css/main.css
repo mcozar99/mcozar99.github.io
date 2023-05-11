@@ -2916,12 +2916,14 @@ background: linear-gradient(148deg, rgba(228,228,228,1) 0%, rgba(91,108,145,1) 1
 @media(max-width: 767px){
 	.services .service-items .item{
 	  flex:0 0 100%;
-      max-width: 100%;
+      max-width: 90%;
    }
    .popup-box .popup-content{
-   	 width: calc(100% - 30px);
+   	 width: calc(100%);
    }
 }
+
+
 
 	.carousel {
 		position: relative;
@@ -3560,3 +3562,255 @@ background: linear-gradient(148deg, rgba(228,228,228,1) 0%, rgba(91,108,145,1) 1
 					}
 
 	}
+
+
+
+/*For phones*/
+
+/* Mobile Styles */
+@media only screen and (max-width: 480px) {
+  /* Header */
+  #header {
+    padding: 2em 0;
+  }
+  
+  #header .line {
+    display: none;
+  }
+
+  #header .inner {
+    text-align: center;
+  }
+
+  #header header {
+    margin-bottom: 2em;
+  }
+  
+  #header footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  #header footer a {
+    margin: 1em;
+  }
+  
+  #header footer .button.scrolly {
+    display: none;
+  }
+  
+  /* Navigation */
+#nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10001;
+    width: 100%;
+    height: 55px;
+    line-height: 55px;
+    background-color: #FFF;
+    text-align: center;
+}
+
+  
+  #nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  #nav li {
+    padding: 1em;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  #nav a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  #nav li:first-child {
+    border-top: 0;
+  }
+  
+
+
+  #nav .close {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5em;
+    text-align: right;
+  }
+
+  #features-orgs .row article {
+    margin-left: 0;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: flex;
+    margin-bottom: -12%;
+    flex-direction: column;
+  }
+
+
+
+  #features-orgs .row article {
+    flex-basis: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  #features-orgs .row .image-container {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5em; /* add margin bottom to create space between articles */
+  }
+  #features-orgs .row article header h3 {
+    font-size: 1.2em; /* decrease font size on mobile devices */
+  }
+  #features-orgs .row article p {
+    font-size: 0.9em; /* decrease font size on mobile devices */
+    margin-bottom: 1em; /* add margin bottom to create space between elements */
+  }
+  #features-orgs .row article .btn {
+    display: block; /* make the button visible on mobile devices */
+    margin-top: 0.5em; /* add margin top to create space between elements */
+  }
+
+
+  .reel{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+ }
+
+.reel article{
+	width: 100%
+
+}
+
+.carousel article{
+	height: fit-content;
+}
+
+.article-header{
+	margin-top: 3em;
+}
+
+
+.popup-box{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top:0;
+	background-color: rgba(0,0,0,0.5);
+	z-index: 500;
+	visibility: hidden;
+	opacity:0;
+	transition: all 0.5s ease-in-out;	
+}
+.popup-box.open{
+	visibility: visible;
+	opacity:1;	
+}
+
+.popup-box .popup-content{
+	display: flex;
+	flex-direction: column;
+	background-color: #ffffff;
+	max-width: 100%;
+	height: 100%;
+	position: relative;
+	left: 50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+	border-radius: 8px;
+}
+
+
+.popup-box .popup-header{
+	padding: 15px;
+	border-bottom: 1px solid #dddddd;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.popup-box .popup-header h3{
+	margin:0;
+	color:#E91E63;
+	font-size: 24px;
+}
+
+
+.popup-box .popup-body{
+	padding: 15px;
+	height: calc(100% - 100px);
+	overflow-y: auto;
+}
+
+.popup-box .popup-body img{
+	max-width: 100%;
+	display: block;
+	margin: 15px auto;
+}
+
+.popup-box .popup-body .figures{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+.popup-box .popup-body h4{
+	font-weight: bold;
+	font-size: 22px;
+	padding: 5px;
+}
+
+.popup-box .popup-body .figure{
+	width: 50%;
+	padding: 15px;
+}
+
+.popup-box .popup-body .figure_big{
+	width: 80%;
+	padding: 15px;
+}
+
+.popup-box .popup-body p{
+	font-size: 16px;
+	color:#555555;
+	margin:0 0 15px;
+}
+
+.popup-box .popup-footer{
+	width: 100%;
+	height: 5%
+	padding: 15px;
+	border-top:1px solid #dddddd;
+	text-align: right;
+}
+
+.popup-box .popup-footer .btn{
+	padding: 8px 15px;
+	border:1px solid #555555;
+	color:#555555;
+	font-size: 12px;
+	background-color: transparent;
+	cursor: pointer;
+	border-radius: 4px;
+}
+.popup-box .popup-footer .btn:focus{
+	outline: none;
+}
+
+
+}
