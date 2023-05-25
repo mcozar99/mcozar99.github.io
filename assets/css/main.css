@@ -2386,6 +2386,21 @@ footer.back-to-top{
 		transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
 	}
 
+	#header button, .button{
+		background: #9b9a9a3d;
+		padding: 0.65em 3em 0.65em 3em;
+		-moz-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
+		-webkit-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
+		-ms-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
+		transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
+	}
+
+	#header button:hover,
+		.button:hover {
+			color: #fff;
+			background: #C7B173;
+		}
+
 		input[type="button"]:hover,
 		input[type="submit"]:hover,
 		input[type="reset"]:hover,
@@ -2695,7 +2710,7 @@ footer.back-to-top{
 			}
 
 			#nav > ul > li {
-				font-size: 100%	;
+				font-size: 100%;
 				display: inline-block;
 				margin: -9px 0.5em 0 0.5em;
 				border-radius: 0.5em;
