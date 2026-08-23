@@ -6,9 +6,11 @@
 -->
 <html>
 	<head>
-		<title>Miguel Cozar - About Me</title>
+		<title>About Miguel Cozar | Hands-on AI Engineering Manager</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="Learn about Miguel Cozar, a hands-on AI Engineering Manager with a background in applied research, machine learning, and technical leadership." />
+		<link rel="canonical" href="https://mcozar99.github.io/about-me.html" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
@@ -35,7 +37,7 @@
 								<hr class="first" />
 								<section>
 									<div class="profile-container">
-									<img src="images/profile.jpg">
+									<img src="images/profile.jpg" alt="Miguel Cozar">
 									</div>
 									<footer>
 										<ul class="icons">
@@ -56,37 +58,19 @@
 										<h2><a href="#">About Me</a></h2>
 									</header>
 									
-									<h3>A simple introduction:</h3>
+									<h3>My AI Journey</h3>
 
-									<small> Hello there! My name is Miguel, and I'm a passionate data scientist who is fascinated by the power of AI. The data explosion that is affecting the world has pushed me to explore this path, 
-										and I wish to be a part of this exciting movement. Python programming, deep learning, plus learning and researching ability are among my biggest strengths. My proactive approach and ambition, however, 
-										I believe, are even more important than my technical skills. 
+									<p>From discovering the power of an LSTM neural network, more than 7 years ago, I ended up in the states pursuing a career in AI. I am currently a hands-on AI Engineering Manager who enjoys the trip from and early PoC or research prototype to a production system. During my career at SvcLnk, my work has combined applied ML, GenAI, and heavy software engineering. I currently enjoy a lot working with my team and watching them grow and suceed</p>
 
-									</small> 
+									<h3>Research foundation</h3>
 
-									<h3>What I'm proud of, what my goals are:</h3>
+									<p>I have experience researching machine-learning fairness, privacy, internet measurement, and graph analysis. That work led to presentations at ICML, Euro S&P, and SECRYPT, including a Best Presentation award at the Euro S&P workshop. One of the biggest lessons from this period is to never make assumptions. We always need the data to back our decisions, and every decision we take has to be evidence-based and with strong foundations.</p>
 
-									<small> Some of my proudest achievements to date include obtaining the prize for Best Presentation of the Day at Euro S&P 2022, keeping a GPA of 3.6 or higher in all of my degrees, 
-										and demonstrating hard-work through internships and scholarships since I was 19. I'm also happy to have also been successful in my personal life. I've lived in 4 different cities, 
-										keeping great friends in all and combining personal and professional life in balance. 
+									<h3>Outside the work</h3>
 
-										In terms of professional objectives, my goal is to find a challenging job in data science and make an effect at the organization where I work. I don't want to be an average employee;
-									 	I want my work to leave a lasting impact.
- 
-									<h3>What my hobbies are:</h3>
+									<p>I enjoy music, soccer, and exploring a city on foot. I'm a big traveler, even though I always think I should travel more!</p>
 
-									<small> I enjoy listening to music, playing soccer or walk the city when I'm not working or studying. I'm a Spotify addict who has reached 75k yearly minutes for three years in a row, 
-										and I've been playing soccer since I was five years old. I've also served as team captain for three years.</small>
-
-									<h3>What you will like about me:</h3>
-
-									<small> My optimistic attitude, motivation, and desire to excel distinguish me from others in my field. I feel that having a can-do attitude is essential for success, and 
-										I am always motivated to learn new things and face new obstacles. I stay current and knowledgable in my profession by reading a variety of materials such as academic papers, news pieces, 
-										and AI newsletters. In addition, finishing my master's degree has provided me with the opportunity to learn cutting-edge technology that I can apply to my profession. <br><br>
-
-									</small>
-
-									This is just a bit about me, but if you wish to know more you can contact me in any of my social media, or in the message box below. I hope you do it! <br><br>
+									<p>For public work, research, or a professional conversation, reach out through LinkedIn, GitHub, or the contact form below.</p>
 
 							</div>
 						</div>
@@ -112,14 +96,10 @@
 							  action="https://formspree.io/f/xknayeaa"
 							  method="POST"
 							>
-							  <label>
-							    Your email:
-							    <input type="email" name="email">
-							  </label>
-							  <label>
-							    Your message:
-							    <textarea name="message"></textarea>
-							  </label>
+							  <label for="about-email">Your email:</label>
+							  <input id="about-email" type="email" name="email" autocomplete="email" required>
+							  <label for="about-message">Your message:</label>
+							  <textarea id="about-message" name="message" required></textarea>
 							  <!-- your other form fields go here -->
 							  <button type="submit">Send</button>
 							</form>

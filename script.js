@@ -1,66 +1,75 @@
 
- $(function () {
-            var mediumPromise = new Promise(function (resolve) {
-            var $content = $('#jsonContent');
-            var data = {
-                rss: 'https://medium.com/feed/@mcozar'
-            };
-            $.get(' https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F%40mcozar', data, function (response) {
-                if (response.status == 'ok') {
-                    $("#logo").append(`<img src="${response.feed["image"]}" class="rounded mx-auto d-block">`)
-                    var display = '';
-                    $.each(response.items, function (k, item) {
-                        display += `<div class="card mb-3 mx-auto mr-5 " style="width: 20rem;">`;
-                        var src = item["thumbnail"]; // use thumbnail url
-                        display += `<img src="${src}" class="card-img-top" alt="Cover image">`;
-                        display += `<div class="card-body">`;
-                        display += `<h5 class="card-title"><a href="${item.link}">${item.title}</a></h5>`;
-                        var yourString = item.description.replace(/<img[^>]*>/g,""); //replace with your string.
-                        yourString = yourString.replace('h4', 'p');
-                        yourString = yourString.replace('h3', 'p');
-                        var maxLength = 240; // maximum number of characters to extract
-                        //trim the string to the maximum length
-                        var trimmedString = yourString.substr(0, maxLength);
-                        //re-trim if we are in the middle of a word
-                        trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
-                        //display += `<p class="card-text">${trimmedString}...</p>`;
-                        
-                        display += `<a href="${item.link}" target="_blank" class="btn btn-outline-success" >Go to article</a>`;
-                        display += '</div></div>';
-                        return k < 10;
-                    });
-        
-                    resolve($content.html(display));
-                }
+$(function () {
+    var $content = $('#jsonContent');
+    var fallbackMarkup = '<p class="medium-status">Recent articles are available on <a href="https://medium.com/@mcozar" target="_blank" rel="noopener noreferrer">Medium</a>.</p>';
+
+    function isSafeUrl(value) {
+        try {
+            var url = new URL(value);
+            return url.protocol === 'https:' || url.protocol === 'http:';
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function getImageUrl(item) {
+        if (isSafeUrl(item.thumbnail)) {
+            return item.thumbnail;
+        }
+
+        return $('<div>').html(item.description || '').find('img').first().attr('src');
+    }
+
+    function renderArticles(items) {
+        $content.attr('aria-busy', 'false').empty();
+
+        items.slice(0, 4).forEach(function (item) {
+            if (!item || !isSafeUrl(item.link)) {
+                return;
+            }
+
+            var $card = $('<article>', { class: 'card' });
+            var $articleLink = $('<a>', {
+                href: item.link,
+                target: '_blank',
+                rel: 'noopener noreferrer',
+                class: 'medium-card-link'
             });
-            });
+            var imageUrl = getImageUrl(item);
+            var $media = $('<div>', { class: 'medium-card-media' });
 
-mediumPromise.then(function()
-            {
-                //Pagination
-                pageSize = 4;
+            if (isSafeUrl(imageUrl)) {
+                $media.append($('<img>', {
+                    src: imageUrl,
+                    alt: '',
+                    class: 'card-img-top'
+                }));
+            }
 
-                var pageCount = $(".card").length / pageSize;
-
-                for (var i = 0; i < pageCount; i++) {
-                    $("#pagin").append(`<li class="page-item"><a class="page-link" href="#">${(i + 1)}</a></li> `);
-                }
-                $("#pagin li:nth-child(1)").addClass("active");
-                showPage = function (page) {
-                    $(".card").hide();
-                    $(".card").each(function (n) {
-                        if (n >= pageSize * (page - 1) && n < pageSize * page)
-                            $(this).show();
-                    });
-                }
-
-                showPage(1);
-
-                $("#pagin li").click(function () {
-                    $("#pagin li").removeClass("active");
-                    $(this).addClass("active");
-                    showPage(parseInt($(this).text()))
-                    return false;
-                });
-            });
+            $articleLink.append($media);
+            $articleLink.append($('<div>', { class: 'card-body' })
+                .append($('<p>', { class: 'medium-card-label', text: 'Medium' }))
+                .append($('<h3>', { class: 'card-title', text: item.title || 'Read article' }))
+                .append($('<span>', { class: 'medium-card-action', text: 'Read article' })));
+            $card.append($articleLink);
+            $content.append($card);
         });
+
+        if (!$content.children().length) {
+            $content.html(fallbackMarkup);
+        }
+    }
+
+    $.getJSON('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F%40mcozar')
+        .done(function (response) {
+            if (response && response.status === 'ok' && Array.isArray(response.items)) {
+                renderArticles(response.items);
+                return;
+            }
+
+            $content.attr('aria-busy', 'false').html(fallbackMarkup);
+        })
+        .fail(function () {
+            $content.attr('aria-busy', 'false').html(fallbackMarkup);
+        });
+});
